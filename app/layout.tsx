@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ChakraProvider } from "@chakra-ui/react";
+import theme from "@/themes/theme";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 export const metadata: Metadata = {
   title: "jing's Blog",
@@ -14,7 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ChakraProvider>{children}</ChakraProvider>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        <ChakraProvider>
+          <>{children}</>
+        </ChakraProvider>
       </body>
     </html>
   );
